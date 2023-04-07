@@ -117,6 +117,7 @@ publishing {
     publications {
         create<MavenPublication>("Maven") {
             from(components["java"])
+            artifactId = tasks.jar.get().archiveBaseName.get()
         }
     }
 }
