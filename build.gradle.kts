@@ -49,6 +49,7 @@ configure<UserDevExtension> {
 
 repositories {
     mavenCentral()
+    maven(url = "https://jitpack.io")
 }
 
 val minecraft by configurations
@@ -65,6 +66,8 @@ dependencies {
     shadow("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$coroutinesVersion")
     shadow("org.jetbrains.kotlinx:kotlinx-serialization-core:$serializationVersion")
     shadow("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
+
+    implementation("com.github.jitpack:gradle-simple:2.0")
 }
 
 blossom {
@@ -113,11 +116,11 @@ tasks {
 
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("Maven") {
-            from(components["java"])
-            artifactId = tasks.jar.get().archiveBaseName.get()
-        }
-    }
-}
+//publishing {
+//    publications {
+//        create<MavenPublication>("Maven") {
+//            from(components["java"])
+//            artifactId = tasks.jar.get().archiveBaseName.get()
+//        }
+//    }
+//}
