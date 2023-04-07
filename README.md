@@ -6,19 +6,16 @@ Fork of [Emberwalker's Forgelin](https://github.com/Emberwalker/Forgelin).
 - Provides a Forge `ILanguageAdapter` for using Kotlin `object` classes as your main mod class.
 
 ## Usage
+
 ```groovy
 repositories {
-	jcenter()
-	maven {
-		url "http://maven.shadowfacts.net/"
-	}
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-	compile group: "net.shadowfacts", name: "Forgelin", version: "LATEST_VERSION"
+    implementation 'com.github.juraj-hrivnak:Forgelin:master-SNAPSHOT'
 }
 ```
 
-All versions can be seen [here](http://maven.shadowfacts.net/net/shadowfacts/Forgelin/).
+All versions can be seen [here](https://jitpack.io/#juraj-hrivnak/Forgelin).
 
-**Note:** You must have the `jcenter()` call in your `repositories` block. JCenter is used to host the Kotlin coroutines libraries.

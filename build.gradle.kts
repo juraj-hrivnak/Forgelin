@@ -32,6 +32,7 @@ plugins {
     kotlin("jvm") version "1.8.10"
     id("net.kyori.blossom") version "1.3.1"
     id("com.github.johnrengelman.shadow") version "7.0.0"
+    `maven-publish`
 }
 
 apply(plugin = "net.minecraftforge.gradle")
@@ -43,9 +44,7 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 java.targetCompatibility = JavaVersion.VERSION_1_8
 
 configure<UserDevExtension> {
-
     mappings(mcpChannel,  mcpVersion)
-
 }
 
 repositories {
@@ -56,6 +55,7 @@ val minecraft by configurations
 
 dependencies {
     minecraft("net.minecraftforge:forge:$forgeVersion")
+
     shadow("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
     shadow("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion")
     shadow("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
@@ -63,6 +63,7 @@ dependencies {
     shadow("org.jetbrains:annotations:$annotationsVersion")
     shadow("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     shadow("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$coroutinesVersion")
+    shadow("org.jetbrains.kotlinx:kotlinx-serialization-core:$serializationVersion")
     shadow("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
 }
 
@@ -110,4 +111,12 @@ tasks {
         )
     }
 
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("Maven") {
+            from(components["java"])
+        }
+    }
 }
